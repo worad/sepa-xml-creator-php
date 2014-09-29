@@ -16,6 +16,7 @@ class SepaBuchung{
 	
 	function __construct() {
 		$this->end2end = "NOTPROVIDED";
+		$this->bic = "NOTPROVIDED";
 	}
 
 	function setEnd2End($end2end) {
@@ -166,8 +167,8 @@ class SepaXmlCreator {
 		// Build Document-Root
 		$document = $dom->createElement('Document');
 		if ($this->mode == 2) {
-			$document->setAttribute('xmlns', 'urn:iso:std:iso:20022:tech:xsd:pain.008.002.02');
-			$document->setAttribute('xsi:schemaLocation', 'urn:iso:std:iso:20022:tech:xsd:pain.008.002.02 pain.008.002.02.xsd');
+			$document->setAttribute('xmlns', 'urn:iso:std:iso:20022:tech:xsd:pain.008.003.02');
+			$document->setAttribute('xsi:schemaLocation', 'urn:iso:std:iso:20022:tech:xsd:pain.008.003.02 pain.008.003.02.xsd');
 		} else {
 			$document->setAttribute('xmlns', 'urn:iso:std:iso:20022:tech:xsd:pain.001.002.03');
 			$document->setAttribute('xsi:schemaLocation', 'urn:iso:std:iso:20022:tech:xsd:pain.001.002.03 pain.001.002.03.xsd');
@@ -330,7 +331,16 @@ class SepaXmlCreator {
 				$buchung->appendChild($tmp1 = $dom->createElement('CdtrAgt'));
 			}
 			$tmp1->appendChild($tmp2 = $dom->createElement('FinInstnId'));
-			$tmp2->appendChild($dom->createElement('BIC', $buchungssatz->bic));
+			
+			if($buchungssatz->bic === "NOTPROVIDED") // BIC ist im Inland optional
+			  {
+			    $tmp3 = $tmp2->appendChild($dom->createElement('Othr'));
+			    $tmp3->appendChild($dom->createElement('Id', 'NOTPROVIDED'));
+			  }
+			else
+			  {
+			    $tmp2->appendChild($dom->createElement('BIC', $buchungssatz->bic));
+			  }
 
 			// Inhaber
 			if ($this->mode == 2) {

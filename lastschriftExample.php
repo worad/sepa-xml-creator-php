@@ -41,7 +41,7 @@
 	$buchung->setBetrag(10);
 	// gewünschte End2End Referenz (OPTIONAL)
 	$buchung->setEnd2End('ID-00002');
-	// BIC des Zahlungspflichtigen Institutes
+	// BIC des Zahlungspflichtigen Institutes (im Inland OPTIONAL)
 	$buchung->setBic('WELADED1GRL');
 	// Name des Zahlungspflichtigen
 	$buchung->setName('Mustermann, Max');

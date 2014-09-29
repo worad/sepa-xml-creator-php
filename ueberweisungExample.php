@@ -36,8 +36,8 @@
 	$buchung->setBetrag(10);
 	// gewünschte End2End Referenz (OPTIONAL)
 	$buchung->setEnd2End('ID-00002');
-	// BIC des Empfängerinstituts
-	$buchung->setBic('EMPFAENGERBIC');
+	// BIC des Empfängerinstituts (im Inland OPTIONAL)
+	$buchung->setBic('EMPFAENGERBIC'); 
 	// Name des Zahlungsempfängers
 	$buchung->setName('Mustermann, Max');
 	// IBAN des Zahlungsmpfängers

@@ -19,6 +19,10 @@ Beispiel-Code: siehe lastschriftExample.php
 =========================================================
 Changelog: 
 
+23.09.2014
+- BIC kann weggelassen werden (wird auf NOTPROVIDED gesetzt)
+  (by W. Radenbach, http://radenbach.de)
+
 03.12.2013
 - fixes Ausführungsdatum anstatt Offset zusätzlich ermöglichen
 
