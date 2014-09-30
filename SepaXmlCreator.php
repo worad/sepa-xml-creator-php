@@ -332,7 +332,10 @@ class SepaXmlCreator {
 			}
 			$tmp1->appendChild($tmp2 = $dom->createElement('FinInstnId'));
 			
-			if($buchungssatz->bic === "NOTPROVIDED") // BIC ist im Inland optional
+			// BIC ist im Inland optional
+			// (by W. Radenbach, http://radenbach.de)
+
+			if($buchungssatz->bic === "NOTPROVIDED") 
 			  {
 			    $tmp3 = $tmp2->appendChild($dom->createElement('Othr'));
 			    $tmp3->appendChild($dom->createElement('Id', 'NOTPROVIDED'));
